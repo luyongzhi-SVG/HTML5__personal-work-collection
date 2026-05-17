@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI 设计原则</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>UI 设计原则</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-15</span>
+                    <span><i class="fas fa-tag"></i> 设计</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 4,321</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <p>UI 设计是创建用户界面的过程，它关注的是界面的外观和交互方式。好的 UI 设计不仅要让产品看起来美观，更要让用户使用起来得心应手。</p>
+                
+                <p>本文将介绍一些基本的 UI 设计原则，帮助您创建更好的用户界面。</p>
+                
+                <h3>一致性原则</h3>
+                <p>保持界面的一致性是 UI 设计中最重要的原则之一。一致性包括：</p>
+                
+                <ol>
+                    <li><strong>视觉一致性</strong>：颜色、字体、图标等视觉元素保持统一风格</li>
+                    <li><strong>交互一致性</strong>：类似的功能使用相似的交互方式</li>
+                    <li><strong>术语一致性</strong>：使用统一的术语和文案</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 一致性的颜色变量定义 */</span>
+<span class="keyword">:root</span> {
+    <span class="keyword">--primary-color</span>: <span class="string">#3498db</span>;
+    <span class="keyword">--secondary-color</span>: <span class="string">#2ecc71</span>;
+    <span class="keyword">--text-color</span>: <span class="string">#333</span>;
+    <span class="keyword">--bg-color</span>: <span class="string">#fff</span>;
+}
+
+<span class="comment">/* 统一的按钮样式 */</span>
+<span class="function">.btn</span> {
+    <span class="keyword">padding</span>: <span class="string">12px 24px</span>;
+    <span class="keyword">border-radius</span>: <span class="string">8px</span>;
+    <span class="keyword">font-weight</span>: <span class="string">500</span>;
+    <span class="keyword">transition</span>: <span class="function">all</span> <span class="string">0.3s</span>;
+}</pre>
+                </div>
+                
+                <h3>层次结构原则</h3>
+                <p>良好的视觉层次结构帮助用户快速理解界面内容的重要性。可以通过以下方式建立层次：</p>
+                
+                <ul>
+                    <li><strong>大小</strong>：重要的内容使用更大的尺寸</li>
+                    <li><strong>颜色</strong>：使用对比色突出重要信息</li>
+                    <li><strong>空间</strong>：通过留白和间距组织内容</li>
+                    <li><strong>对齐</strong>：对齐的元素会形成视觉联系</li>
+                </ul>
+                
+                <h3>用户熟悉度</h3>
+                <p>设计应该符合用户的预期和习惯：</p>
+                
+                <ol>
+                    <li><strong>使用常见的图标</strong>：如放大镜代表搜索，购物车代表购物</li>
+                    <li><strong>遵循平台规范</strong>：iOS 和 Android 有不同的设计语言</li>
+                    <li><strong>保持位置一致</strong>：导航通常在顶部或左侧</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 遵循用户习惯的导航设计 */</span>
+<span class="function">.navbar</span> {
+    <span class="keyword">display</span>: <span class="string">flex</span>;
+    <span class="keyword">justify-content</span>: <span class="string">space-between</span>;
+    <span class="keyword">align-items</span>: <span class="string">center</span>;
+    <span class="keyword">padding</span>: <span class="string">15px 30px</span>;
+    <span class="keyword">background</span>: <span class="string">white</span>;
+    <span class="keyword">box-shadow</span>: <span class="string">0 2px 10px rgba(0,0,0,0.1)</span>;
+}</pre>
+                </div>
+                
+                <h3>反馈原则</h3>
+                <p>用户需要知道他们的操作是否成功。提供清晰的反馈：</p>
+                
+                <ol>
+                    <li><strong>视觉反馈</strong>：按钮点击效果、加载状态</li>
+                    <li><strong>文字反馈</strong>：成功提示、错误信息</li>
+                    <li><strong>声音反馈</strong>：完成提示音（适当使用）</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 按钮点击反馈 */</span>
+<span class="function">.btn</span>:<span class="keyword">active</span> {
+    <span class="keyword">transform</span>: <span class="function">scale</span>(<span class="string">0.98</span>);
+    <span class="keyword">box-shadow</span>: <span class="string">0 2px 5px rgba(0,0,0,0.2)</span>;
+}
+
+<span class="comment">/* 加载状态 */</span>
+<span class="function">.loading</span> {
+    <span class="keyword">display</span>: <span class="string">inline-block</span>;
+    <span class="keyword">width</span>: <span class="string">20px</span>;
+    <span class="keyword">height</span>: <span class="string">20px</span>;
+    <span class="keyword">border</span>: <span class="string">2px solid rgba(0,0,0,0.1)</span>;
+    <span class="keyword">border-radius</span>: <span class="string">50%</span>;
+    <span class="keyword">border-top-color</span>: <span class="string">#3498db</span>;
+    <span class="keyword">animation</span>: <span class="function">spin</span> <span class="string">1s</span> <span class="function">ease-in-out infinite</span>;
+}</pre>
+                </div>
+                
+                <h3>可用性原则</h3>
+                <p>设计应该让所有用户都能方便使用：</p>
+                
+                <ol>
+                    <li><strong>可访问性</strong>：考虑色盲、视障用户</li>
+                    <li><strong>容错性</strong>：提供撤销功能，防止误操作</li>
+                    <li><strong>简洁性</strong>：避免不必要的复杂性</li>
+                    <li><strong>效率</strong>：为熟练用户提供快捷方式</li>
+                </ol>
+                
+                <h3>总结</h3>
+                <p>UI 设计是一个不断学习和实践的过程。遵循这些基本原则可以帮助您创建更好的用户界面。记住，最好的设计往往是最简单、最直观的设计。</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

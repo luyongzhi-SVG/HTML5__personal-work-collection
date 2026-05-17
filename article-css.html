@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 动画效果</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>CSS 动画效果</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-17</span>
+                    <span><i class="fas fa-tag"></i> 设计</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 3,456</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <p>CSS 动画是现代网页设计中不可或缺的元素。通过 CSS 动画，我们可以创建出精美的视觉效果，提升用户体验。</p>
+                
+                <p>从简单的 hover 效果到复杂的关键帧动画，CSS 提供了强大的动画能力。让我们一起来探索吧！</p>
+                
+                <h3>Transition 过渡动画</h3>
+                <p>transition 是最简单的 CSS 动画方式，用于在元素状态变化时添加过渡效果。</p>
+                
+                <div class="code-block">
+<pre><span class="function">.button</span> {
+    <span class="keyword">background</span>: <span class="string">#3498db</span>;
+    <span class="keyword">transition</span>: <span class="function">all</span> <span class="string">0.3s</span> <span class="function">ease</span>;
+}
+
+<span class="function">.button</span>:<span class="keyword">hover</span> {
+    <span class="keyword">background</span>: <span class="string">#2980b9</span>;
+    <span class="keyword">transform</span>: <span class="function">translateY</span>(<span class="string">-3px</span>);
+}</pre>
+                </div>
+                
+                <h3>Transform 变换</h3>
+                <p>transform 属性可以对元素进行旋转、缩放、位移等变换操作。</p>
+                
+                <div class="code-block">
+<pre><span class="function">.box</span> {
+    <span class="keyword">transform</span>: <span class="function">rotate</span>(<span class="string">45deg</span>) <span class="function">scale</span>(<span class="string">1.2</span>);
+    <span class="keyword">transform-origin</span>: <span class="string">center</span> <span class="string">center</span>;
+}
+
+<span class="function">.card</span>:<span class="keyword">hover</span> {
+    <span class="keyword">transform</span>: <span class="function">translateY</span>(<span class="string">-10px</span>) <span class="function">scale</span>(<span class="string">1.02</span>);
+}</pre>
+                </div>
+                
+                <h3>Keyframes 关键帧动画</h3>
+                <p>关键帧动画可以创建更复杂的动画效果，通过 @keyframes 定义动画的各个阶段。</p>
+                
+                <div class="code-block">
+<pre><span class="keyword">@keyframes</span> <span class="function">fadeInUp</span> {
+    <span class="string">0%</span> {
+        <span class="keyword">opacity</span>: <span class="string">0</span>;
+        <span class="keyword">transform</span>: <span class="function">translateY</span>(<span class="string">30px</span>);
+    }
+    <span class="string">100%</span> {
+        <span class="keyword">opacity</span>: <span class="string">1</span>;
+        <span class="keyword">transform</span>: <span class="function">translateY</span>(<span class="string">0</span>);
+    }
+}
+
+<span class="function">.fade-in-up</span> {
+    <span class="keyword">animation</span>: <span class="function">fadeInUp</span> <span class="string">0.6s</span> <span class="function">ease-out</span> <span class="function">forwards</span>;
+}</pre>
+                </div>
+                
+                <h3>实用的动画效果</h3>
+                <p>以下是一些常见的 CSS 动画效果：</p>
+                
+                <ol>
+                    <li><strong>加载动画</strong>：旋转的圈圈或跳动的点</li>
+                    <li><strong>脉冲效果</strong>：呼吸式缩放</li>
+                    <li><strong>弹跳效果</strong>：元素弹跳落地</li>
+                    <li><strong>滑动效果</strong>：元素从边缘滑入</li>
+                    <li><strong>打字效果</strong>：文字逐字显示</li>
+                </ol>
+                
+                <h3>动画性能优化</h3>
+                <p>使用 CSS 动画时要注意性能问题：</p>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 推荐使用：只使用 transform 和 opacity */</span>
+<span class="function">.element</span> {
+    <span class="keyword">transition</span>: <span class="function">transform</span> <span class="string">0.3s</span> <span class="function">ease</span>, <span class="function">opacity</span> <span class="string">0.3s</span> <span class="function">ease</span>;
+    <span class="keyword">will-change</span>: <span class="string">transform</span>, <span class="string">opacity</span>;
+}
+
+<span class="comment">/* 避免：使用会触发重排的属性 */</span>
+<span class="comment">/* transition: width 0.3s ease; */</span></pre>
+                </div>
+                
+                <h3>总结</h3>
+                <p>CSS 动画是提升网页视觉效果的强大工具。合理地使用动画可以大大提升用户体验，但也要注意不要过度使用，以免影响网页性能。</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

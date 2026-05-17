@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 交互效果</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>JavaScript 交互效果</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-18</span>
+                    <span><i class="fas fa-tag"></i> 开发</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 2,567</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <p>JavaScript 是 Web 开发中最重要的编程语言之一，它使网页变得生动有趣。本文将介绍一些常用的 JavaScript 交互效果实现方法。</p>
+                
+                <p>从简单的点击事件到复杂的数据可视化，JavaScript 都能胜任。掌握 JavaScript 是成为优秀前端开发工程师的必经之路。</p>
+                
+                <h3>事件处理</h3>
+                <p>事件是 JavaScript 与用户交互的基础。常见的事件包括点击、悬停、滚动等。</p>
+                
+                <div class="code-block">
+<pre><span class="function">document</span>.<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="keyword">function</span>() {
+    <span class="function">console</span>.<span class="function">log</span>(<span class="string">'页面被点击了！'</span>);
+});
+
+<span class="keyword">const</span> <span class="function">button</span> = <span class="function">document</span>.<span class="function">querySelector</span>(<span class="string">'button'</span>);
+<span class="function">button</span>.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    <span class="function">alert</span>(<span class="string">'按钮被点击！'</span>);
+});</pre>
+                </div>
+                
+                <h3>表单验证</h3>
+                <p>表单验证是 Web 开发中最常见的功能之一。使用 JavaScript 可以在用户提交表单前进行验证，提高用户体验。</p>
+                
+                <div class="code-block">
+<pre><span class="keyword">const</span> <span class="function">form</span> = <span class="function">document</span>.<span class="function">querySelector</span>(<span class="string">'form'</span>);
+<span class="function">form</span>.<span class="function">addEventListener</span>(<span class="string">'submit'</span>, <span class="keyword">function</span>(<span class="function">e</span>) {
+    <span class="function">e</span>.<span class="function">preventDefault</span>();
+    
+    <span class="keyword">const</span> <span class="function">email</span> = <span class="function">document</span>.<span class="function">querySelector</span>(<span class="string">'#email'</span>).<span class="function">value</span>;
+    
+    <span class="keyword">if</span> (!<span class="function">email</span>.<span class="function">includes</span>(<span class="string">'@'</span>)) {
+        <span class="function">alert</span>(<span class="string">'请输入有效的邮箱地址'</span>);
+        <span class="keyword">return</span>;
+    }
+    
+    <span class="function">alert</span>(<span class="string">'验证通过！'</span>);
+});</pre>
+                </div>
+                
+                <h3>实用的交互效果</h3>
+                <p>以下是几种常见的交互效果实现方法：</p>
+                
+                <ol>
+                    <li><strong>模态框</strong>：点击按钮弹出对话框</li>
+                    <li><strong>轮播图</strong>：自动切换的图片展示</li>
+                    <li><strong>无限滚动</strong>：滚动到底部加载更多内容</li>
+                    <li><strong>下拉菜单</strong>：点击或悬停显示子菜单</li>
+                    <li><strong>平滑滚动</strong>：锚点链接的平滑过渡</li>
+                </ol>
+                
+                <h3>示例：平滑滚动</h3>
+                <p>下面是一个实现平滑滚动的简单示例：</p>
+                
+                <div class="code-block">
+<pre><span class="function">document</span>.<span class="function">querySelectorAll</span>(<span class="string">'a[href^="#"]'</span>).<span class="function">forEach</span>(<span class="function">anchor</span> => {
+    <span class="function">anchor</span>.<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="keyword">function</span>(<span class="function">e</span>) {
+        <span class="function">e</span>.<span class="function">preventDefault</span>();
+        
+        <span class="keyword">const</span> <span class="function">targetId</span> = <span class="function">this</span>.<span class="function">getAttribute</span>(<span class="string">'href'</span>);
+        <span class="keyword">const</span> <span class="function">targetElement</span> = <span class="function">document</span>.<span class="function">querySelector</span>(<span class="function">targetId</span>);
+        
+        <span class="function">targetElement</span>.<span class="function">scrollIntoView</span>({
+            <span class="keyword">behavior</span>: <span class="string">'smooth'</span>,
+            <span class="keyword">block</span>: <span class="string">'start'</span>
+        });
+    });
+});</pre>
+                </div>
+                
+                <h3>总结</h3>
+                <p>JavaScript 提供了强大的交互能力，掌握好 JavaScript 可以让你的网页更加生动有趣。不断练习，你会发现 JavaScript 的无穷魅力！</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

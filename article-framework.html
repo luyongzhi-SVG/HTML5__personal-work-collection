@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端框架学习</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>前端框架学习</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-16</span>
+                    <span><i class="fas fa-tag"></i> 开发</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 1,890</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <p>现代前端开发离不开框架的帮助。React、Vue、Angular 等主流框架大大提高了开发效率。本文将带您了解这些框架的特点。</p>
+                
+                <p>选择合适的框架是每个前端开发者需要面对的问题。让我们一起来看看各个框架的优势和适用场景。</p>
+                
+                <h3>React</h3>
+                <p>React 是由 Facebook 开发的 JavaScript 库，以其高效的虚拟 DOM 和组件化思想著称。</p>
+                
+                <div class="code-block">
+<pre><span class="keyword">import</span> { <span class="function">useState</span> } <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">function</span> <span class="function">Counter</span>() {
+    <span class="keyword">const</span> [<span class="function">count</span>, <span class="function">setCount</span>] = <span class="function">useState</span>(<span class="string">0</span>);
+    
+    <span class="keyword">return</span> (
+        &lt;<span class="string">div</span>&gt;
+            &lt;<span class="string">h2</span>&gt;{<span class="function">count</span>}&lt;/<span class="string">h2</span>&gt;
+            &lt;<span class="string">button</span> <span class="function">onClick</span>={() => <span class="function">setCount</span>(<span class="function">count</span> + <span class="string">1</span>)}&gt;
+                点击
+            &lt;/<span class="string">button</span>&gt;
+        &lt;/<span class="string">div</span>&gt;
+    );
+}</pre>
+                </div>
+                
+                <h3>Vue</h3>
+                <p>Vue 是由尤雨溪开发的渐进式框架，以其易学易用和优秀的文档著称。</p>
+                
+                <div class="code-block">
+<pre>&lt;<span class="string">template</span>&gt;
+    &lt;<span class="string">div</span>&gt;
+        &lt;<span class="string">h2</span>&gt;{{ <span class="function">count</span> }}&lt;/<span class="string">h2</span>&gt;
+        &lt;<span class="string">button</span> @<span class="function">click</span>=<span class="string">"count++"</span>&gt;点击&lt;/<span class="string">button</span>&gt;
+    &lt;/<span class="string">div</span>&gt;
+&lt;/<span class="string">template</span>&gt;
+
+&lt;<span class="string">script setup</span>&gt;
+<span class="keyword">import</span> { <span class="function">ref</span> } <span class="keyword">from</span> <span class="string">'vue'</span>;
+<span class="keyword">const</span> <span class="function">count</span> = <span class="function">ref</span>(<span class="string">0</span>);
+&lt;/<span class="string">script</span>&gt;</pre>
+                </div>
+                
+                <h3>Angular</h3>
+                <p>Angular 是由 Google 开发的完整框架，适合大型企业级应用。</p>
+                
+                <div class="code-block">
+<pre><span class="keyword">import</span> { <span class="function">Component</span> } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+
+<span class="function">@Component</span>({
+    <span class="keyword">selector</span>: <span class="string">'app-counter'</span>,
+    <span class="keyword">template</span>: <span class="string">`&lt;h2&gt;{{count}}&lt;/h2&gt;
+             &lt;button (click)="count++"&gt;点击&lt;/button&gt;`</span>
+})
+<span class="keyword">export class</span> <span class="function">CounterComponent</span> {
+    <span class="function">count</span> = <span class="string">0</span>;
+}</pre>
+                </div>
+                
+                <h3>如何选择框架</h3>
+                <p>选择框架时可以考虑以下因素：</p>
+                
+                <ol>
+                    <li><strong>项目规模</strong>：Angular 适合大型项目，React 和 Vue 适合中小型项目</li>
+                    <li><strong>团队技术栈</strong>：选择团队熟悉的框架可以提高开发效率</li>
+                    <li><strong>学习曲线</strong>：Vue 入门难度较低，Angular 相对较高</li>
+                    <li><strong>生态系统</strong>：React 和 Vue 的生态系统非常丰富</li>
+                    <li><strong>性能需求</strong>：三个框架性能都不错，具体场景具体分析</li>
+                </ol>
+                
+                <h3>状态管理</h3>
+                <p>现代前端项目通常需要状态管理：</p>
+                
+                <ul>
+                    <li><strong>React</strong>: Redux、Zustand、Jotai</li>
+                    <li><strong>Vue</strong>: Vuex、Pinia</li>
+                    <li><strong>Angular</strong>: NgRx、Services</li>
+                </ul>
+                
+                <h3>总结</h3>
+                <p>没有最好的框架，只有最适合的框架。建议您至少掌握一个主流框架，理解它们的核心思想，这对您的职业生涯会有很大帮助。</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

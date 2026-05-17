@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>以前端为载体，将创意落地屏幕</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li><a href="projects.html"><i class="fas fa-briefcase"></i> 项目展示</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="projects.html">项目展示</a>
+                    <a href="contact.html">联系我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>以技术为笔，以设计为墨</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-19</span>
+                    <span><i class="fas fa-tag"></i> 前端技术</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 3,456</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <h3>代码筑界，像素生光</h3>
+                <p>以HTML搭建骨架，用CSS雕琢肌理，让每一段代码都兼具逻辑与美感。在像素之间打磨细节，在代码之中创造浪漫。</p>
+                
+                <p>以前端为载体，将创意落地屏幕。每一次样式调试，都是对极致视觉的奔赴。专注前端视觉重构，用HTML搭建结构，用CSS渲染温柔，让技术兼具温度与力量。</p>
+                
+                <h3>深耕前端方寸，重构视觉万象</h3>
+                <p>用标准化语义化代码，打造流畅、高效、适配全端的网页体验。跨越屏幕边界，适配多元场景。响应式布局自适应设备尺寸，让网页呈现始终恰到好处。</p>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 极简美学 · 代码规范 */</span>
+<span class="keyword">:root</span> {
+    <span class="keyword">--primary</span>: <span class="string">#667eea</span>;
+    <span class="keyword">--accent</span>: <span class="string">#764ba2</span>;
+    <span class="keyword">--text</span>: <span class="string">#2c3e50</span>;
+    <span class="keyword">--bg</span>: <span class="string">#f5f7fa</span>;
+}
+
+<span class="comment">/* 细节雕琢 · 动态活力 */</span>
+<span class="function">.card</span> {
+    <span class="keyword">transition</span>: <span class="function">all</span> <span class="string">0.4s</span> <span class="function">cubic-bezier</span>(<span class="string">0.4</span>, <span class="string">0</span>, <span class="string">0.2</span>, <span class="string">1</span>);
+}
+
+<span class="function">.card</span>:<span class="keyword">hover</span> {
+    <span class="keyword">transform</span>: <span class="function">translateY</span>(<span class="string">-8px</span>);
+    <span class="keyword">box-shadow</span>: <span class="string">0 15px 40px rgba(0,0,0,0.18)</span>;
+}</pre>
+                </div>
+                
+                <h3>摒弃冗余代码，坚守极简美学</h3>
+                <p>用简洁规范的前端语法，实现性能与视觉的双向极致。细节雕琢质感，动态赋予活力。通过过渡动画，光影层级、留白构图，让静态页面拥有动态生命力。</p>
+                
+                <ol>
+                    <li><strong>像素匠心，极致呈现</strong> — 不辜负每一处细节，不浪费每一寸屏幕</li>
+                    <li><strong>以简驭繁，以质取胜</strong> — 用心打造每一个交互，让网页不止可用，更可耐看</li>
+                    <li><strong>深耕细节，重塑视觉</strong> — 持续深耕前端领域，打磨每一处视觉与交互细节</li>
+                    <li><strong>纯粹代码，纯粹美学</strong> — 以极简设计消解繁杂，以流畅交互提升体验</li>
+                </ol>
+                
+                <h3>标准化构建，精细化打磨</h3>
+                <p>遵循W3C规范，用纯净HTML+CSS，搭建稳定、优雅、易迭代的网页架构。始于代码，陷于设计，忠于体验。做有质感、有温度的前端页面。</p>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 响应式布局 · 自适应所有设备 */</span>
+<span class="function">.container</span> {
+    <span class="keyword">display</span>: <span class="string">flex</span>;
+    <span class="keyword">min-height</span>: <span class="string">100vh</span>;
+}
+
+<span class="comment">/* 跨越屏幕边界，适配万物 */</span>
+<span class="keyword">@media</span> (<span class="keyword">max-width</span>: <span class="string">768px</span>) {
+    <span class="function">.sidebar</span> {
+        <span class="keyword">width</span>: <span class="string">100%</span>;
+        <span class="keyword">height</span>: <span class="string">auto</span>;
+        <span class="keyword">position</span>: <span class="string">relative</span>;
+    }
+}</pre>
+                </div>
+                
+                <h3>技术打底，设计赋能</h3>
+                <p>依托HTML5全新特性与CSS3动态样式，解锁网页交互无限可能。让创意不止于想象，让设计落地于屏幕。每一次像素的精准把控，都是对极致的追求。</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

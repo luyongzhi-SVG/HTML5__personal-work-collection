@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5+CSS3 学习笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #007bff;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 18px;
+            margin: 20px 0 15px;
+        }
+
+        .section p {
+            color: #666;
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            border-left: 4px solid #007bff;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .list {
+            padding-left: 30px;
+            color: #666;
+        }
+
+        .list li {
+            margin-bottom: 10px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
+            padding: 0 4px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7f3ff;
+            color: #007bff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            color: #856404;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HTML5+CSS3 学习笔记</h1>
+            <p>《HTML5+CSS3网站设计基础教程（第3版）》知识点总结</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>一、HTML5 新特性</h2>
+                
+                <h3>1.1 语义化标签</h3>
+                <p>HTML5引入了一系列语义化标签，使页面结构更加清晰，提升SEO和可访问性。</p>
+                <table class="table">
+                    <tr>
+                        <th>标签</th>
+                        <th>用途</th>
+                    </tr>
+                    <tr>
+                        <td>&lt;header&gt;</td>
+                        <td>页面头部，包含标题、导航等</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;nav&gt;</td>
+                        <td>导航区域，网站导航链接</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;section&gt;</td>
+                        <td>内容区块，语义化的内容分组</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;article&gt;</td>
+                        <td>独立文章，可独立发布的内容</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;aside&gt;</td>
+                        <td>侧边栏，辅助信息区域</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;footer&gt;</td>
+                        <td>页脚，版权信息等</td>
+                    </tr>
+                </table>
+
+                <h3>1.2 多媒体标签</h3>
+                <p>HTML5原生支持音视频播放，无需第三方插件。</p>
+                <div class="code-block">
+<pre>&lt;!-- 音频 --&gt;
+&lt;audio src="music.mp3" controls&gt;您的浏览器不支持音频&lt;/audio&gt;
+
+&lt;!-- 视频 --&gt;
+&lt;video src="video.mp4" controls width="640" height="360"&gt;
+    您的浏览器不支持视频
+&lt;/video&gt;</pre>
+                </div>
+
+                <h3>1.3 表单新特性</h3>
+                <p>新增多种输入类型和属性，提升用户体验和表单验证。</p>
+                <div class="tag">email</div>
+                <div class="tag">tel</div>
+                <div class="tag">url</div>
+                <div class="tag">number</div>
+                <div class="tag">date</div>
+                <div class="tag">range</div>
+                <div class="tag">search</div>
+                <div class="tag">placeholder</div>
+                <div class="tag">required</div>
+                <div class="tag">autocomplete</div>
+                <div class="tag">autofocus</div>
+            </div>
+
+            <div class="section">
+                <h2>二、CSS3 新特性</h2>
+                
+                <h3>2.1 选择器</h3>
+                <p>CSS3扩展了选择器功能，提供更强大的样式控制能力。</p>
+                <div class="code-block">
+<pre>/* 属性选择器 */
+input[type="text"] { ... }
+
+/* 伪类选择器 */
+a:hover { ... }
+li:nth-child(2n) { ... }
+
+/* 伪元素选择器 */
+p::first-line { ... }
+p::before { content: ""; }</pre>
+                </div>
+
+                <h3>2.2 盒模型与边框</h3>
+                <div class="code-block">
+<pre>.box {
+    box-sizing: border-box;  /* 宽高包含内边距和边框 */
+    border-radius: 8px;      /* 圆角 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 阴影 */
+}</pre>
+                </div>
+
+                <h3>2.3 背景与渐变</h3>
+                <div class="code-block">
+<pre>/* 线性渐变 */
+.gradient {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+/* 径向渐变 */
+.radial {
+    background: radial-gradient(circle, #ff0000, #0000ff);
+}
+
+/* 多重背景 */
+.bg {
+    background: url(img1.jpg) no-repeat left top,
+                url(img2.jpg) no-repeat right bottom;
+}</pre>
+                </div>
+
+                <h3>2.4 文本效果</h3>
+                <div class="code-block">
+<pre>.text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  /* 文字阴影 */
+    word-break: break-all;  /* 换行处理 */
+    text-overflow: ellipsis;  /* 省略号 */
+}</pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>三、CSS3 动画与过渡</h2>
+                
+                <h3>3.1 过渡（Transition）</h3>
+                <p>实现元素状态变化时的平滑过渡效果。</p>
+                <div class="code-block">
+<pre>.box {
+    transition: all 0.3s ease;  /* 属性 时长 缓动函数 */
+}
+
+.box:hover {
+    transform: scale(1.1);
+}</pre>
+                </div>
+
+                <h3>3.2 动画（Animation）</h3>
+                <p>使用@keyframes定义动画关键帧。</p>
+                <div class="code-block">
+<pre>@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    animation: spin 1s ease-in-out infinite;
+}</pre>
+                </div>
+
+                <h3>3.3 变换（Transform）</h3>
+                <div class="code-block">
+<pre>.transform {
+    transform: translate(10px, 20px);  /* 位移 */
+    transform: rotate(45deg);           /* 旋转 */
+    transform: scale(1.5);              /* 缩放 */
+    transform: skew(10deg, 5deg);       /* 倾斜 */
+    transform-origin: center center;    /* 变换原点 */
+}</pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>四、响应式设计</h2>
+                
+                <h3>4.1 媒体查询（Media Queries）</h3>
+                <p>根据设备特性应用不同样式。</p>
+                <div class="code-block">
+<pre>/* 基础样式 */
+.container { width: 1200px; }
+
+/* 平板设备 */
+@media (max-width: 1024px) {
+    .container { width: 90%; }
+}
+
+/* 手机设备 */
+@media (max-width: 768px) {
+    .container { width: 100%; }
+}</pre>
+                </div>
+
+                <h3>4.2 视口设置</h3>
+                <div class="code-block">
+<pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+                </div>
+
+                <h3>4.3 弹性布局（Flexbox）</h3>
+                <div class="code-block">
+<pre>.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}</pre>
+                </div>
+
+                <div class="note">
+                    <strong>提示：</strong>采用移动优先原则，先设计移动端布局，再逐步扩展到更大屏幕。
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>五、高级 CSS 效果</h2>
+                
+                <h3>5.1 毛玻璃效果</h3>
+                <div class="code-block">
+<pre>.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}</pre>
+                </div>
+
+                <h3>5.2 滤镜（Filter）</h3>
+                <div class="code-block">
+<pre>.img-bright { filter: brightness(1.2); }    /* 亮度 */
+.img-blur { filter: blur(5px); }            /* 模糊 */
+.img-grayscale { filter: grayscale(50%); }  /* 灰度 */</pre>
+                </div>
+
+                <h3>5.3 文字渐变</h3>
+                <div class="code-block">
+<pre>.gradient-text {
+    background: linear-gradient(45deg, #007bff, #6610f2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}</pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>六、学习路径与最佳实践</h2>
+                
+                <h3>6.1 学习路径</h3>
+                <ol class="list">
+                    <li><strong>基础阶段</strong>：HTML5语义化标签、CSS3基础选择器和属性</li>
+                    <li><strong>进阶阶段</strong>：CSS3动画、过渡、变换</li>
+                    <li><strong>实战阶段</strong>：响应式设计、综合项目开发</li>
+                    <li><strong>高级阶段</strong>：性能优化、浏览器兼容性处理</li>
+                </ol>
+
+                <h3>6.2 最佳实践</h3>
+                <ul class="list">
+                    <li><span class="highlight">语义化优先</span>：使用正确的HTML5标签</li>
+                    <li><span class="highlight">样式分离</span>：CSS写在单独文件中</li>
+                    <li><span class="highlight">响应式设计</span>：移动优先原则</li>
+                    <li><span class="highlight">代码规范</span>：统一缩进、注释清晰</li>
+                    <li><span class="highlight">性能优化</span>：图片压缩、CSS精简</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 HTML5+CSS3 学习笔记 | 参考《HTML5+CSS3网站设计基础教程（第3版）》</p>
+        </div>
+    </div>
+</body>
+</html>

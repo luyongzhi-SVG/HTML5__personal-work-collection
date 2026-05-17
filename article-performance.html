@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>性能优化技巧</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 导航栏 -->
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <!-- 文章头部 -->
+            <article class="article-header fade-in-up">
+                <h2>性能优化技巧</h2>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 2026-04-14</span>
+                    <span><i class="fas fa-tag"></i> 文章</span>
+                    <span><i class="fas fa-eye"></i> 阅读次数: 5,678</span>
+                </div>
+            </article>
+
+            <!-- 文章内容 -->
+            <article class="article-content fade-in-up delay-1">
+                <p>网站性能是用户体验的关键因素之一。一个加载缓慢的网站会导致用户流失，影响搜索引擎排名。本文将介绍一些实用的网站性能优化技巧。</p>
+                
+                <p>性能优化是一个持续的过程，需要在开发过程中时刻关注。让我们一起来学习如何提升网站性能。</p>
+                
+                <h3>图片优化</h3>
+                <p>图片通常是网站加载最慢的资源。以下是图片优化的方法：</p>
+                
+                <ol>
+                    <li><strong>选择合适的格式</strong>：WebP、JPEG、PNG 各有优缺点</li>
+                    <li><strong>压缩图片</strong>：使用工具压缩图片大小</li>
+                    <li><strong>响应式图片</strong>：根据设备加载不同尺寸的图片</li>
+                    <li><strong>懒加载</strong>：延迟加载不在视口内的图片</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 响应式图片 */</span>
+&lt;<span class="string">picture</span>&gt;
+    &lt;<span class="string">source</span> <span class="function">srcset</span>=<span class="string">"image-large.webp"</span> <span class="keyword">media</span>=<span class="string">"(min-width: 1024px)"</span>&gt;
+    &lt;<span class="string">source</span> <span class="function">srcset</span>=<span class="string">"image-medium.webp"</span> <span class="keyword">media</span>=<span class="string">"(min-width: 768px)"</span>&gt;
+    &lt;<span class="string">img</span> <span class="function">src</span>=<span class="string">"image-small.webp"</span> <span class="keyword">alt</span>=<span class="string">"描述"</span>&gt;
+&lt;/<span class="string">picture</span>&gt;
+
+<span class="comment">/* 懒加载 */</span>
+&lt;<span class="string">img</span> <span class="function">src</span>=<span class="string">"placeholder.jpg"</span> <span class="keyword">data-src</span>=<span class="string">"real-image.jpg"</span> <span class="keyword">class</span>=<span class="string">"lazy"</span>&gt;</pre>
+                </div>
+                
+                <h3>CSS 优化</h3>
+                <p>优化 CSS 可以显著提升页面渲染速度：</p>
+                
+                <ol>
+                    <li><strong>减少选择器复杂度</strong>：避免过深的选择器嵌套</li>
+                    <li><strong>合并 CSS 文件</strong>：减少 HTTP 请求</li>
+                    <li><strong>使用 CSS 变量</strong>：提高代码复用性</li>
+                    <li><strong>关键 CSS 内联</strong>：首屏 CSS 直接写在 HTML 中</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 使用 CSS 变量提高复用性 */</span>
+<span class="keyword">:root</span> {
+    <span class="keyword">--primary-color</span>: <span class="string">#3498db</span>;
+    <span class="keyword">--spacing</span>: <span class="string">16px</span>;
+    <span class="keyword">--border-radius</span>: <span class="string">8px</span>;
+}
+
+<span class="comment">/* 避免过深的选择器 */</span>
+<span class="comment">/* 不推荐 */</span>
+<span class="function">.header .nav .nav-list .nav-item a</span> { }
+
+<span class="comment">/* 推荐 */</span>
+<span class="function">.nav-link</span> { }</pre>
+                </div>
+                
+                <h3>JavaScript 优化</h3>
+                <p>高效的 JavaScript 可以大大提升页面性能：</p>
+                
+                <ol>
+                    <li><strong>减少 DOM 操作</strong>：批量操作，减少重排重绘</li>
+                    <li><strong>事件委托</strong>：使用单个事件监听器处理多个元素</li>
+                    <li><strong>防抖节流</strong>：优化频繁触发的事件</li>
+                    <li><strong>代码分割</strong>：按需加载 JavaScript</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 事件委托 */</span>
+<span class="function">document</span>.<span class="function">querySelector</span>(<span class="string">'.list'</span>).<span class="function">addEventListener</span>(<span class="string">'click'</span>, (<span class="function">e</span>) => {
+    <span class="keyword">if</span> (<span class="function">e</span>.<span class="function">target</span>.<span class="function">matches</span>(<span class="string">'.item'</span>)) {
+        <span class="function">console</span>.<span class="function">log</span>(<span class="string">'点击了 item'</span>);
+    }
+});
+
+<span class="comment">/* 防抖函数 */</span>
+<span class="keyword">function</span> <span class="function">debounce</span>(<span class="function">func</span>, <span class="function">wait</span>) {
+    <span class="keyword">let</span> <span class="function">timeout</span>;
+    <span class="keyword">return function</span>() {
+        <span class="keyword">const</span> <span class="function">context</span> = <span class="keyword">this</span>;
+        <span class="keyword">const</span> <span class="function">args</span> = <span class="function">arguments</span>;
+        <span class="function">clearTimeout</span>(<span class="function">timeout</span>);
+        <span class="function">timeout</span> = <span class="function">setTimeout</span>(() => <span class="function">func</span>.<span class="function">apply</span>(<span class="function">context</span>, <span class="function">args</span>), <span class="function">wait</span>);
+    };
+}</pre>
+                </div>
+                
+                <h3>缓存策略</h3>
+                <p>合理的缓存策略可以大大减少服务器负载和加载时间：</p>
+                
+                <ol>
+                    <li><strong>浏览器缓存</strong>：设置 Cache-Control 和 ETag</li>
+                    <li><strong>CDN</strong>：使用内容分发网络加速资源加载</li>
+                    <li><strong>Service Worker</strong>：实现离线缓存和后台同步</li>
+                    <li><strong>本地存储</strong>：使用 localStorage 缓存数据</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* Service Worker 缓存策略 */</span>
+<span class="keyword">const</span> <span class="function">CACHE_NAME</span> = <span class="string">'v1'</span>;
+<span class="keyword">const</span> <span class="function">urlsToCache</span> = [<span class="string">'/'</span>, <span class="string">'/styles.css'</span>, <span class="string">'/script.js'</span>];
+
+<span class="function">self</span>.<span class="function">addEventListener</span>(<span class="string">'install'</span>, (<span class="function">event</span>) => {
+    <span class="function">event</span>.<span class="function">waitUntil</span>(
+        <span class="function">caches</span>.<span class="function">open</span>(<span class="function">CACHE_NAME</span>)
+            .<span class="function">then</span>((<span class="function">cache</span>) => <span class="function">cache</span>.<span class="function">addAll</span>(<span class="function">urlsToCache</span>))
+    );
+});</pre>
+                </div>
+                
+                <h3>加载策略</h3>
+                <p>优化资源的加载顺序和方式：</p>
+                
+                <ol>
+                    <li><strong>异步加载</strong>：defer 和 async 属性</li>
+                    <li><strong>预加载</strong>：preload 和 prefetch</li>
+                    <li><strong>懒加载</strong>：按需加载非关键资源</li>
+                    <li><strong>代码分割</strong>：拆分成多个小文件</li>
+                </ol>
+                
+                <div class="code-block">
+<pre><span class="comment">/* 资源预加载 */</span>
+&lt;<span class="string">link</span> <span class="keyword">rel</span>=<span class="string">"preload"</span> <span class="keyword">href</span>=<span class="string">"critical.css"</span> <span class="keyword">as</span>=<span class="string">"style"</span>&gt;
+&lt;<span class="string">link</span> <span class="keyword">rel</span>=<span class="string">"prefetch"</span> <span class="keyword">href</span>=<span class="string">"next-page.css"</span> <span class="keyword">as</span>=<span class="string">"style"</span>&gt;
+
+<span class="comment">/* 异步加载脚本 */</span>
+&lt;<span class="string">script</span> <span class="keyword">src</span>=<span class="string">"analytics.js"</span> <span class="keyword">async</span>&gt;&lt;/<span class="string">script</span>&gt;
+&lt;<span class="string">script</span> <span class="keyword">src</span>=<span class="string">"app.js"</span> <span class="keyword">defer</span>&gt;&lt;/<span class="string">script</span>&gt;</pre>
+                </div>
+                
+                <h3>总结</h3>
+                <p>性能优化是一个持续的过程，需要在开发、测试、上线的各个环节都加以关注。通过本文介绍的技巧，您可以显著提升网站的加载速度和用户体验。记住，性能就是功能，不要忽视它！</p>
+            </article>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

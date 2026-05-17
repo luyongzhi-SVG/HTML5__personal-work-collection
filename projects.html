@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            position: relative;
+        }
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.9);
+            color: #3498db;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .project-content {
+            padding: 20px;
+        }
+        .project-content h3 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .project-content p {
+            color: #5a6c7d;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .project-tech {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            background: #f5f7fa;
+            color: #3498db;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .project-links a:hover {
+            background: #3498db;
+            color: white;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li class="active"><a href="projects.html"><i class="fas fa-briefcase"></i> 项目展示</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我</a></li>
+                    <li><a href="article.html"><i class="fas fa-file-alt"></i> 文章</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="projects.html">项目展示</a>
+                    <a href="contact.html">联系我</a>
+                    <a href="article.html">文章</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <section class="hero fade-in-up">
+                <h2>我的项目</h2>
+                <p>这里展示了我参与开发的一些项目，涵盖前端开发、UI设计等领域</p>
+            </section>
+
+            <section class="tags">
+                <span class="tag active" data-filter="all">全部</span>
+                <span class="tag" data-filter="frontend">前端项目</span>
+                <span class="tag" data-filter="ui">UI设计</span>
+                <span class="tag" data-filter="mobile">移动端</span>
+                <span class="tag" data-filter="opensource">开源项目</span>
+            </section>
+
+            <section class="projects-grid">
+                <article class="project-card" data-category="frontend" onclick="location.href='project-ecommerce.html'">
+                    <div class="project-image">
+                        <i class="fas fa-store"></i>
+                        <div class="project-badge">前端项目</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>电商管理平台</h3>
+                        <p>基于 Vue3 + TypeScript 开发的电商管理后台系统，包含订单管理、商品管理、用户管理等功能。</p>
+                        <div class="project-tech">Vue3 / TypeScript</div>
+                        <div class="project-links">
+                            <a href="project-ecommerce.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="mobile" onclick="location.href='project-health.html'">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="project-badge">移动端</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>健康管理App</h3>
+                        <p>一款健康管理类移动应用，支持步数统计、饮食记录、运动计划等功能，采用 React Native 开发。</p>
+                        <div class="project-tech">React Native</div>
+                        <div class="project-links">
+                            <a href="project-health.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ui" onclick="location.href='project-portfolio.html'">
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                        <div class="project-badge">UI设计</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>个人作品集网站</h3>
+                        <p>使用 HTML5 + CSS3 构建的现代化个人作品集网站，包含响应式设计和丰富的动画效果。</p>
+                        <div class="project-tech">HTML5 / CSS3</div>
+                        <div class="project-links">
+                            <a href="project-portfolio.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="opensource" onclick="location.href='project-chart.html'">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="project-badge">开源项目</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>数据可视化图表库</h3>
+                        <p>基于 Canvas 开发的轻量级图表库，支持折线图、柱状图、饼图等多种图表类型。</p>
+                        <div class="project-tech">JavaScript / Canvas</div>
+                        <div class="project-links">
+                            <a href="project-chart.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="frontend" onclick="location.href='project-blog.html'">
+                    <div class="project-image">
+                        <i class="fas fa-file-alt"></i>
+                        <div class="project-badge">前端项目</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>技术博客平台</h3>
+                        <p>基于 Next.js 开发的现代化博客平台，支持 Markdown 编辑、代码高亮、评论系统等功能。</p>
+                        <div class="project-tech">Next.js / React</div>
+                        <div class="project-links">
+                            <a href="project-blog.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="frontend" onclick="location.href='project-task.html'">
+                    <div class="project-image">
+                        <i class="fas fa-tasks"></i>
+                        <div class="project-badge">前端项目</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>任务管理系统</h3>
+                        <p>支持任务创建、分类、优先级设置的任务管理应用，支持多用户协作和数据同步。</p>
+                        <div class="project-tech">Vue3 / Pinia</div>
+                        <div class="project-links">
+                            <a href="project-task.html"><i class="fas fa-eye"></i> 查看详情</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // 标签筛选功能
+        const tags = document.querySelectorAll('.tags .tag');
+        const cards = document.querySelectorAll('.projects-grid .project-card');
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // 移除所有标签的 active 类
+                tags.forEach(t => t.classList.remove('active'));
+                // 给当前点击的标签添加 active 类
+                tag.classList.add('active');
+
+                const filter = tag.getAttribute('data-filter');
+
+                // 筛选卡片
+                cards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    } else if (card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 回到顶部功能
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

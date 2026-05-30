@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { exec } = require('child_process');
+const path = require('path');
+const fs = require('fs');
 const db = require('./database');
 
 const app = express();
@@ -10,10 +13,10 @@ const JWT_SECRET = 'your-secret-key-change-in-production';
 const SALT_ROUNDS = 10;
 
 app.use(cors());
-app.use(express.static(__dirname));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// API 路由应该在静态文件服务之前定义
 app.get('/', (req, res) => {
     res.json({ message: '欢迎来到个人作品集 API', version: '1.0.0' });
 });
@@ -272,6 +275,81 @@ app.post('/api/user/logout', (req, res) => {
     });
 });
 
+// GitHub 热点追踪器 API
+app.get('/api/github/trending', (req, res) => {
+    const { period = 'daily', limit = 20 } = req.query;
+    
+    const githubApiPath = path.join(__dirname, 'github', 'github_api.py');
+    
+    if (!fs.existsSync(githubApiPath)) {
+        return res.status(500).json({ 
+            success: false, 
+            error: 'GitHub API 脚本不存在',
+            data: [] 
+        });
+    }
+    
+    exec(`python "${githubApiPath}" trending ${period} ${limit}`, { encoding: 'utf-8' }, (error, stdout, stderr) => {
+        if (error) {
+            console.error('GitHub API 错误:', error);
+            return res.status(500).json({ 
+                success: false, 
+                error: '调用 GitHub API 失败: ' + error.message,
+                data: [] 
+            });
+        }
+        
+        try {
+            const result = JSON.parse(stdout);
+            res.json(result);
+        } catch (parseError) {
+            console.error('JSON 解析错误:', parseError);
+            res.status(500).json({ 
+                success: false, 
+                error: '数据解析失败',
+                data: [] 
+            });
+        }
+    });
+});
+
+app.get('/api/github/languages', (req, res) => {
+    const githubApiPath = path.join(__dirname, 'github', 'github_api.py');
+    
+    if (!fs.existsSync(githubApiPath)) {
+        return res.status(500).json({ 
+            success: false, 
+            error: 'GitHub API 脚本不存在',
+            languages: [] 
+        });
+    }
+    
+    exec(`python "${githubApiPath}" languages`, { encoding: 'utf-8' }, (error, stdout, stderr) => {
+        if (error) {
+            console.error('GitHub API 错误:', error);
+            return res.status(500).json({ 
+                success: false, 
+                error: '调用 GitHub API 失败: ' + error.message,
+                languages: [] 
+            });
+        }
+        
+        try {
+            const result = JSON.parse(stdout);
+            res.json(result);
+        } catch (parseError) {
+            console.error('JSON 解析错误:', parseError);
+            res.status(500).json({ 
+                success: false, 
+                error: '数据解析失败',
+                languages: [] 
+            });
+        }
+    });
+});
+
+app.use(express.static(__dirname));
+
 app.listen(PORT, () => {
     console.log(`服务器运行在 http://localhost:${PORT}`);
     console.log('API 接口列表:');
@@ -286,5 +364,7 @@ app.listen(PORT, () => {
     console.log('POST   /api/register      - 用户注册');
     console.log('POST   /api/login         - 用户登录');
     console.log('GET    /api/user/info     - 获取用户信息（需Token）');
-    console.log('POST   /api/user/logout    - 退出登录');
+    console.log('POST   /api/user/logout   - 退出登录');
+    console.log('GET    /api/github/trending - 获取 GitHub 热点（公开）');
+    console.log('GET    /api/github/languages - 获取可用编程语言（公开）');
 });

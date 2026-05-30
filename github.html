@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 热点追踪器</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .github-header {
+            background: linear-gradient(135deg, #24292e 0%, #0d1117 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        .github-header h2 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .github-header p {
+            margin: 0;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        .trend-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .trend-tab {
+            padding: 10px 20px;
+            background: #f5f7fa;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .trend-tab:hover {
+            background: #e0e7ff;
+        }
+        .trend-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .repo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+        .repo-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .repo-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #24292e;
+            text-decoration: none;
+        }
+        .repo-name:hover {
+            color: #667eea;
+        }
+        .repo-badge {
+            padding: 4px 12px;
+            background: #e8f0fe;
+            color: #1967d2;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .repo-description {
+            color: #586069;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .repo-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #586069;
+            font-size: 13px;
+        }
+        .repo-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .repo-meta-item i {
+            color: #667eea;
+        }
+        .stars-badge {
+            background: #fff5e6;
+            color: #ea4aaa;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .loading-spinner {
+            text-align: center;
+            padding: 50px;
+        }
+        .loading-spinner i {
+            font-size: 40px;
+            color: #667eea;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #586069;
+        }
+        .empty-state i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background: #373e47;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>个人作品集</h1>
+            <p class="title">前端开发工程师</p>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+                    <li><a href="projects.html"><i class="fas fa-briefcase"></i> 项目展示</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我</a></li>
+                    <li class="active"><a href="github.html"><i class="fab fa-github"></i> GitHub 热点</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> 登录</a></li>
+                </ul>
+            </nav>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">项目数量</span>
+                    <span class="stat-value">20+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">文章数量</span>
+                    <span class="stat-value">50+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">技术栈</span>
+                    <span class="stat-value">15</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <div class="logo">Portfolio</div>
+                <div class="nav-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于我</a>
+                    <a href="projects.html">项目展示</a>
+                    <a href="contact.html">联系我</a>
+                    <a href="github.html">GitHub 热点</a>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </header>
+
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+
+            <section class="github-header">
+                <h2><i class="fab fa-github"></i> GitHub 热点追踪器</h2>
+                <p>实时追踪 GitHub 热门仓库，发现优质开源项目</p>
+            </section>
+
+            <section class="trend-tabs">
+                <button class="trend-tab active" data-period="daily">日榜</button>
+                <button class="trend-tab" data-period="weekly">周榜</button>
+                <button class="trend-tab" data-period="monthly">月榜</button>
+            </section>
+
+            <section id="repo-list">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner"></i>
+                    <p style="margin-top: 15px;">正在加载数据...</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 个人作品集. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        let currentPeriod = "daily";
+        let isLoading = true;
+
+        async function fetchTrending(period) {
+            const container = document.getElementById('repo-list');
+            container.innerHTML = `
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner"></i>
+                    <p style="margin-top: 15px;">正在加载数据...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`/api/github/trending?period=${period}&limit=20`);
+                const result = await response.json();
+
+                if (result.success && result.data.length > 0) {
+                    renderRepos(result.data);
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>暂无 ${period === 'daily' ? '日榜' : period === 'weekly' ? '周榜' : '月榜'} 数据</p>
+                            <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                                请先运行 python github_tracker.py 抓取数据
+                            </p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('获取数据失败:', error);
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>数据加载失败</p>
+                        <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                            请检查服务器是否正常运行
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderRepos(repos) {
+            const container = document.getElementById('repo-list');
+
+            if (!repos || repos.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>暂无数据</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = repos.map((repo, index) => `
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <a href="${repo.url}" target="_blank" class="repo-name">
+                            <i class="fab fa-github"></i> ${repo.author}/${repo.repo_name}
+                        </a>
+                        <span class="repo-badge">#${index + 1}</span>
+                    </div>
+                    <p class="repo-description">${repo.description}</p>
+                    <div class="repo-meta">
+                        ${repo.language ? `
+                            <div class="repo-meta-item">
+                                <i class="fas fa-code"></i>
+                                <span>${repo.language}</span>
+                            </div>
+                        ` : ''}
+                        <div class="repo-meta-item">
+                            <i class="fas fa-star"></i>
+                            <span class="stars-badge">${(repo.stars || 0).toLocaleString()}</span>
+                        </div>
+                        <div class="repo-meta-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>${(repo.forks || 0).toLocaleString()}</span>
+                        </div>
+                        <div class="repo-meta-item">
+                            <i class="fas fa-arrow-up"></i>
+                            <span style="color: #28a745; font-weight: 600;">+${(repo.today_stars || 0).toLocaleString()} stars</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function switchPeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.trend-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.period === period) {
+                    tab.classList.add('active');
+                }
+            });
+            fetchTrending(period);
+        }
+
+        document.querySelectorAll('.trend-tab').forEach(tab => {
+            tab.addEventListener('click', () => switchPeriod(tab.dataset.period));
+        });
+
+        fetchTrending('daily');
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
